@@ -22,7 +22,7 @@ body{
 }
 .homeslider{
 	width: 100%;
-	background: url('bg.png') #63a4ea;
+	background: image-url('bg.png') #63a4ea;
 	text-align: center;
 	height: 100vh;
 	transition: ease 1s transform;
@@ -253,7 +253,7 @@ h1 {
 	z-index: 3;
 }
 .bird {
-	background-image: url('bird-cells.svg');
+	background-image: image-url('bird-cells.svg');
 	background-size: auto 100%;
 	width: 88px;
 	height: 125px;
