@@ -1,0 +1,4 @@
+$('#lead_phone_verification_token').val("<%= @verification_code %>");
+$('#verify_phone_code').removeClass('hide');
+$('.verify_mobile_verification_code').removeClass('hide');
+$('.verification_code').text("<%= @verification_code %>")

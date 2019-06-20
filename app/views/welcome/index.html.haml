@@ -13,8 +13,9 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            %a.navbar-brand{href: "#"}
+            = link_to root_path, class: "navbar-brand" do
               = image_tag "new_logo.png"
+            = link_to "Create New Lead", new_lead_path, class: "create_lead"
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %p.heading_class Choose where your power comes from
       %p.sub_title

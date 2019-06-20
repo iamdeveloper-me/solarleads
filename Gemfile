@@ -71,3 +71,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 # Haml gem
 gem "haml-rails"
+# Twilio gem
+gem 'twilio-ruby'
+# Letter opener gem
+gem "letter_opener", :group => :development

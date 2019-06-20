@@ -1,0 +1,7 @@
+<% if @is_valid %>
+	$('#verify_phone_code').attr('disabled', true);
+	$('.verify_mobile_verification_code').attr("disabled", true);
+<% else %>
+	$('.verify_mobile_verification_code').attr('href', '/leads/verify_mobile_code');
+	alert("Invalid Code, please try again!");
+<% end %>

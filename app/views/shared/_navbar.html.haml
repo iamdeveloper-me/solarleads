@@ -1,0 +1,13 @@
+%header.header.fixed-top.clearfix
+  / logo start
+  .brand
+    = link_to root_path, class: "logo" do
+      = image_tag 'logo.png'
+  / logo end
+  .top-nav.clearfix
+    / search & user info start
+    %ul.nav.pull-right.top-menu
+      %li
+        %input.form-control.search(placeholder=" Search" type="text")/
+    / search & user info end
+/ header end

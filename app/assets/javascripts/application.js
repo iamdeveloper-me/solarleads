@@ -14,7 +14,11 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require jquery
+//= require bootstrap.min
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+	$(".alert").fadeOut(5000);
+});

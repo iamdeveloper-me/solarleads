@@ -1,0 +1,415 @@
+.panel-body
+  /
+    page start
+  %section.panel.marbot0px
+    .panel-body.panelfix
+      = form_with(model: lead, local: true, class: 'form-horizontal', id: 'lead-form') do |form|
+        #wizard
+
+          / 01 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+            .form-group
+              %h4 Address
+              .col-lg-12.mapcontainer
+                #pac-card
+                  #pac-containe
+                  = form.text_field :address,{ id: "pac-input",class: 'form-control', placeholder: "Enter your address", type: "text"}
+                  %table
+                    %tr
+                      - #%td.label Street address
+                      %td.slimField
+                        %input#street_number.field{disabled: "true", type: "hidden"}>/
+                        \&gt;/
+                        \\/
+                      %td.wideField{colspan: "2"}
+                        %input#route.field{disabled: "true", type: "hidden"}>/
+                        \&gt;/
+                        \\/
+                    %tr
+                      %td.label City
+                      %td.wideField{colspan: "3"}
+                        .field
+                          = form.text_field :city,{ id: "locality", type: "text", placeholder: "City"}
+                    %tr
+                      %td.label State
+                      %td.slimField
+                        .field
+                          = form.text_field :state,{ id: "administrative_area_level_1", type: "text", placeholder: "State"}
+                      %td.label Zip code
+                      %td.wideField
+                        .field
+                          = form.text_field :zipcode,{ id: "postal_code", type: "text", placeholder: "Zip Code"}
+                          %span.inline_error
+                            = @lead.errors[:zipcode].join(', ')
+                    %tr
+                      %td.label Country
+                      %td.wideField{colspan: "3"}
+                        .field
+                          = form.text_field :country,{ id: "country", type: "text", placeholder: "Country"}
+
+                / Map
+                #map
+                #infowindow-content
+                  %img#place-icon{height: "16", width: "16"}/
+                  %span#place-name.title
+                  %br/
+                  %span#place-address
+
+          / 02 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Age Of Home
+                .col-lg-12
+                  = form.select :age_of_home, options_for_select(["Less than 10 Years Old", "Older than 10 Years"]), {}, {class: 'form-control'}
+
+          / 03 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 How many square feet is your home?
+                .col-lg-12
+                  = form.text_field :square_feet, class: 'form-control', placeholder: 'Enter your Square Feet'
+
+          / 04 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Electricity Provider
+                .col-lg-12
+                  = form.collection_select :electricity_provider_id, ElectricityProvider.order(:name),:id,:name, { prompt: "Please Select Elecricity Provider"}, {class: 'form-control'}
+
+          / 05 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Average Monthly Utility Bill Cost
+                %h1.text-center.font-40.martop40px
+                  $
+                  %span#demo
+                .col-lg-12
+                  .slidecontainer
+                    = form.text_field :current_monthly_electricity_bill,{ id: "myRange", class: "slider", max: "500", min: "0", type: "range", value: "50"}
+
+          / 06 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Average Age Of Appliances
+                .col-lg-12
+                  = form.select :average_age_of_appliances, options_for_select(["New", "Old", "Not Sure"]), {}, {class: 'form-control'}
+
+          / 07 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Do you have a new thermostat?
+                .col-lg-12
+                  = form.select :new_thermostat, options_for_select([['Yes', true], ['No', false]]), {}, {class: 'form-control'}
+
+          / 08 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Age of Roof
+                .col-lg-12
+                  = form.select :age_of_roof, options_for_select(["Less than 10", "More than 10"]), {}, {class: 'form-control'}
+
+          / 09 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Roof Color
+                .col-lg-12
+                  = form.select :roof_color, options_for_select(["Darker Colored (Ex. Black, Gray)", "Light (Ex. White, Yellow)"]), {}, {class: 'form-control'}
+
+          / 10 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Roof Type
+                .col-lg-12
+                  .round_select
+                    - @roof_types.each do |roof_type|
+                      = form.radio_button :roof_type_id, roof_type.id, id: "roof_type_#{roof_type.id}",class: "input-hidden"
+                      %label{:for => "roof_type_#{roof_type.id}"}
+                        = image_tag roof_type.image
+                        %p
+                          = roof_type.name
+
+          / 11 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Roof Shading
+                .col-lg-12
+                .round_select
+                  - @roof_shadings.each do |roof_shading|
+                    = form.radio_button :roof_shading_id, roof_shading.id, id: "roof_shading_#{roof_shading.id}",class: "input-hidden"
+                    %label{:for => "roof_shading_#{roof_shading.id}"}
+                      = image_tag roof_shading.image
+                      %p
+                        = roof_shading.name
+          / 12 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Roof Pitch
+                .col-lg-12
+                  .round_select
+                    - @roof_pitches.each do |roof_pitch|
+                      = form.radio_button :roof_pitch_id, roof_pitch.id, id: "roof_pitch_#{roof_pitch.id}",class: "input-hidden"
+                      %label{:for => "roof_pitch_#{roof_pitch.id}"}
+                        = image_tag roof_pitch.image
+                        %p
+                          = roof_pitch.name
+          / 13 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Do you have good roof ventilation?
+                .col-lg-12
+                  = form.select :roof_ventilation, options_for_select(["Yes", "No", "Not sure"]), {}, {class: 'form-control'}
+
+          / 14 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 How often do you replace air filters?
+                .col-lg-12
+                  = form.select :replaced_air_filters, options_for_select(["Less than 3 Months", "3-6 months", "6 Months +"]), {}, {class: 'form-control'}
+
+          / 15 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Do you notice cold and warm spots throughout your home?
+                .col-lg-12
+                  = form.select :cold_and_warm_spots, options_for_select([['Yes', true], ['No', false]]), {}, {class: 'form-control'}
+
+          / 16 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Do doors randomly slam in your home?
+                .col-lg-12
+                  = form.select :doors_randomly_slam, options_for_select([['Yes', true], ['No', false]]), {}, {class: 'form-control'}
+
+          / 17 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Any obstructions around floor vents in your home?
+                .col-lg-12
+                  = form.select :obstructions_around_floor, options_for_select(["None", "Some", "Completely Covered"]), {}, {class: 'form-control'}
+
+          / 18 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Any noises being made by current AC unit?
+                .col-lg-12
+                  = form.select :current_ac_unit, options_for_select([['Yes', true], ['No', false]]), {}, {class: 'form-control'}
+
+          / 19 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Does your AC blow warm air?
+                .col-lg-12
+                  = form.select :ac_blow_warm, options_for_select(["Yes", "No", "Not Sure"]), {}, {class: 'form-control'}
+
+          / 20 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 How often does your AC turn off and on?
+                .col-lg-12
+                  = form.select :ac_turn, options_for_select(["Not often", "Often"]), {}, {class: 'form-control'}
+
+          / 21 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Does it seem like a lot of noise comes through closed windows and doors?
+                .col-lg-12
+                  = form.select :noise_comes_through, options_for_select([['Yes', true], ['No', false]]), {}, {class: 'form-control'}
+
+          / 22 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Does your home feel colder around doors and windows?
+                .col-lg-12
+                  = form.select :colder_around, options_for_select([['Yes', true], ['No', false]]), {}, {class: 'form-control'}
+
+          / 23 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Any leaks or condensation in or around your windows or doors?
+                .col-lg-12
+                  = form.select :leaks_or_condensation, options_for_select([['Yes', true], ['No', false]]), {}, {class: 'form-control'}
+
+          / 24 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Do your windows and doors operate smoothly? (open and close)
+                .col-lg-12
+                  = form.select :operate_smoothly, options_for_select(["Yes easy to open and close", "No, difficult to open and close"]), {}, {class: 'form-control'}
+
+          / 25 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Decaying,chipped or cracked frames around windows?
+                .col-lg-12
+                  = form.select :chipped_or_cracked_frames, options_for_select(["Yes", "No", "Not sure"]), {}, {class: 'form-control'}
+
+          / 26 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Any discoloration on curtains/drapes near windows?
+                .col-lg-12
+                  = form.select :discoloration_on_curtains, options_for_select(["Yes", "No", "Not sure"]), {}, {class: 'form-control'}
+
+          / 27 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Name
+                .col-lg-12
+                  = form.text_field :name, class: 'form-control', placeholder: 'Full Name'
+                  %span.inline_error
+                    = @lead.errors[:name].join(', ')
+
+          / 28 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              .form-group
+                %h4 Email
+                .col-lg-12
+                  = form.email_field :email, class: 'form-control', placeholder: 'Email'
+                  %span.inline_error
+                    = @lead.errors[:email].join(', ')
+
+          / 29 Step
+          %h2 Step
+          %section
+            %span.form-horizontal
+              %h4.phonecode
+                Your Phone Verification Code is:
+                %span.verification_code
+              .form-group
+                -#%h4 Country code
+                .col-lg-12
+                  = hidden_field_tag :country_code, '1', placeholder: 'Enter Your Country Code Here'
+                  - #= select_tag "authy-countries", nil, name: 'country_code', 'data-show-as': 'number'
+                %h4 Phone Number
+                .col-lg-12
+                  = form.text_field :phone_number, class: 'form-control', placeholder: 'Enter your Phone Number'
+                  %span.inline_error
+                    = @lead.errors[:phone_number].join(', ')
+                  = form.hidden_field :phone_verification_token
+                  %br/
+                  = link_to "Send Code", send_mobile_verification_code_leads_path, class: 'btn btn-primary send_mobile_verification_code', remote: true
+                  %br/
+                  %br/
+                  = text_field_tag(:verify_phone_code, nil, class: 'form-control hide', placeholder: 'Enter your verification code.')
+                  - #= text_field_tag :verify_phone_code, class: 'form-control hide', placeholder: 'Enter your verification code.'
+                  = link_to "Verify Code", verify_mobile_code_leads_path, class: 'btn btn-success verify_mobile_verification_code hide', remote: true
+
+          / Final Step
+          %h2 Step
+          %section
+            %p.text-center.tank-message Thank You
+
+  / page end
+:javascript
+  $(function ()
+  {
+    $("#wizard").steps({
+      headerTag: "h2",
+      bodyTag: "section",
+      transitionEffect: "slideLeft"
+    });
+  });
+:javascript
+  $(function ()
+  {
+    $('#lead_phone_number').on('change', function(){
+      var phone_number = $(this).val();
+      // var country_code = $('.countries-input').val();
+      var country_code = $('#country_code').val();
+      var cls = $('.send_mobile_verification_code');
+      cls.attr('href', (cls.attr('href')+'?country_code=' + country_code + '&phone_number=' + phone_number));
+    });
+
+    $('#verify_phone_code').on('change', function(){
+      var verify_phone_code = $(this).val();
+      var original_code = $('#lead_phone_verification_token').val();
+      var cls = $('.verify_mobile_verification_code');
+      cls.attr('href', (cls.attr('href')+'?verify_phone_code=' + verify_phone_code + '&original_code=' + original_code));
+    });
+  });
+- #Hide Show input field
+:javascript
+  function ShowHideDiv(emailsendcode) {
+      var dvCode = document.getElementById("dvCode");
+      dvCode.style.display = emailsendcode.checked ? "block" : "none";
+
+      alert("step1");
+      if (emailsendcode.checked){
+        alert("step2");
+        $.ajax({
+          url: '/email_verification_token',
+          type: 'GET',
+          data: {"completed": emailsendcode.checked}
+        });
+      }
+      else {
+         alert("no");
+      }
+
+  }
+
+  $(function() {
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+  });

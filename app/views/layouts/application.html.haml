@@ -1,11 +1,54 @@
 !!!
 %html
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Solarleads
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title SmartLeads
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.js', 'data-turbolinks-track': 'reload'
+    %link{href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500", rel: "stylesheet", type: "text/css"}/
+    %link{href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", rel: "stylesheet"}/
+    :css
+      .slidecontainer {
+        width: 100% !important;
+      }
+
+      .slider {
+        -webkit-appearance: none !important;
+        width: 100% !important;
+        height: 10px !important;
+        border-radius: 5px !important;
+        background: #d3d3d3 !important;
+        outline: none !important;
+        opacity: 0.7 !important;
+        -webkit-transition: .2s !important;
+        transition: opacity .2s !important;
+      }
+
+      .slider:hover {
+        opacity: 1 !important;
+      }
+
+      .slider::-webkit-slider-thumb {
+       -webkit-appearance: none;
+        appearance: none !important;
+        width: 10px !important;
+        height: 24px !important;
+        border: 0 !important;
+      //  background: url('contrasticon.png') !important;
+       background-color:#6CCAC9 !important;
+        cursor: pointer !important;
+      }
   %body
-    = yield
+    %section#container
+      - if is_show_navbar?
+        = render "shared/navbar"
+
+      - flash.each do |key, value|
+        %div{:class => "alertfix alert alert-#{key}"}= value
+      = yield
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyALpuh1NFAnFQaOSYkatXC-VoKeK4DyXY0&libraries=places"}
+  %script{async: "", defer: "defer", src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyALpuh1NFAnFQaOSYkatXC-VoKeK4DyXY0&libraries=places&callback=initMap"}
