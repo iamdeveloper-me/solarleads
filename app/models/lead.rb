@@ -8,7 +8,7 @@ class Lead < ApplicationRecord
   # Callbacks
   before_create :confirmation_token
   # TODO: remove multiple after_create
-  after_create :send_email_confirmation
+  # after_create :send_email_confirmation
 
   #Enum
   enum status: { open: "open", closed: "closed" }
@@ -37,9 +37,9 @@ class Lead < ApplicationRecord
     end
   end
 
-  def send_email_confirmation
-    # TODO: have to send this email using back-groud jobs
-    # Send email confirmation link to Lead to verify thier Email Address
-    LeadMailer.email_confirmation(self.email, self.confirm_token).deliver
-  end
+  # def send_email_confirmation
+  #   # TODO: have to send this email using back-groud jobs
+  #   # Send email confirmation link to Lead to verify thier Email Address
+  #   LeadMailer.email_confirmation(self.email, self.confirm_token).deliver
+  # end
 end
