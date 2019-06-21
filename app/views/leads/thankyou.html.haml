@@ -1,5 +1,15 @@
 .main_wrapper
 	.wrapper
 		%h1.textcenter Thank You
+		%h2.textcenter
+			Your HOME IQ:
+			= @total_calculation
+		%h2.textcenter
+			Stantdard HOME IQ for:
+			= @average_energy_cost.try(:region_name)
+			= @average_energy_cost.try(:region_code)
+			$
+			= @average_energy_cost.try(:average_cost)
+
 		%br/
 		= link_to 'New Lead', new_lead_path

@@ -14,7 +14,7 @@ class Lead < ApplicationRecord
   enum status: { open: "open", closed: "closed" }
 
   # Validation
-  validates :name, :email, presence: true
+  validates :name, :email, :current_monthly_electricity_bill, :square_feet, presence: true
   validates :phone_number,
               presence: true,
               numericality: true,

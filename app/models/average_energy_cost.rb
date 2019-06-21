@@ -1,0 +1,2 @@
+class AverageEnergyCost < ApplicationRecord
+end

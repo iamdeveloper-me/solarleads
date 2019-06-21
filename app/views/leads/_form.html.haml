@@ -74,6 +74,8 @@
                 %h4 How many square feet is your home?
                 .col-lg-12
                   = form.text_field :square_feet, class: 'form-control', placeholder: 'Enter your Square Feet'
+                  %span.inline_error
+                    = @lead.errors[:square_feet].join(', ')
 
           / 04 Step
           %h2 Step
@@ -96,6 +98,8 @@
                 .col-lg-12
                   .slidecontainer
                     = form.text_field :current_monthly_electricity_bill,{ id: "myRange", class: "slider", max: "500", min: "0", type: "range", value: "50"}
+                  %span.inline_error
+                    = @lead.errors[:current_monthly_electricity_bill].join(', ')
 
           / 06 Step
           %h2 Step

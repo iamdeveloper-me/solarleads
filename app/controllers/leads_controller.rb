@@ -12,7 +12,7 @@ class LeadsController < ApplicationController
 		@lead = Lead.new(lead_params)
 		if @lead.save
 			flash[:success] = "Lead was successfully created."
-			redirect_to leads_thankyou_path
+			redirect_to leads_thankyou_path(lead_id: @lead.id)
 		else
 			render "new"
 		end
@@ -32,7 +32,13 @@ class LeadsController < ApplicationController
 	end
 
 	# GET /leads/thankyou
-	def thankyou;end
+	def thankyou
+		lead = Lead.find(params[:lead_id])
+		# Total Calculation
+		@total_calculation = lead.current_monthly_electricity_bill.to_i / lead.square_feet.to_i
+		# Find Average Energy Cost
+		@average_energy_cost = AverageEnergyCost.where('region_name LIKE ?', "#{lead.state}%").first
+	end
 
 	# GET /thank_you
 	def email_thankyou;end
@@ -53,14 +59,14 @@ class LeadsController < ApplicationController
 
 	# GET /leads/verify_mobile_code
 	def verify_mobile_code
-    # TODO: create new field and update that phone number has been verified
-    @is_valid = params[:verify_phone_code] === params[:original_code] ? true : false
-    respond_to do |format|
-    	format.js
-    end
-  end
+		# TODO: create new field and update that phone number has been verified
+		@is_valid = params[:verify_phone_code] === params[:original_code] ? true : false
+		respond_to do |format|
+			format.js
+		end
+	end
 
-  private
+	private
 
 	# White listing Lead parameters
 	def lead_params
