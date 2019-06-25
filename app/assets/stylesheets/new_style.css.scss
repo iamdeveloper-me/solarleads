@@ -103,7 +103,7 @@ img {
   bottom: -10px;
   padding: 4px 8px;
   color: #1e62dd;
-  background: url(circal.png);
+  background: image-url("circal.png");
   text-indent: -99999px;
   background-position: center;
   background-size: 100%;
@@ -343,7 +343,7 @@ img {
   left: 10px; 
   width:33PX;
   height: 12PX;
-  background: url(left_arrow.png);
+  background: image-url("left_arrow.png");
   background-repeat: no-repeat;
   text-indent: -9999px;
   transform: rotate(0deg);
@@ -356,7 +356,7 @@ img {
   left:inherit; 
   width:33PX;
   height: 12PX;
-  background: url(left_arrow.png);
+  background: image-url("left_arrow.png");
   text-indent: -9999px;   
   background-repeat: no-repeat;
   transform: rotate(180deg);
