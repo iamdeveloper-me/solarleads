@@ -59,12 +59,6 @@ img {
 	margin: auto;
 	align-items: center;
 }
-.wizard {
-    width: 451px;
-    position: relative;
-    height: 656px;
-    margin-left: 14.7%;
-}
 .steps .current-info, .steps .number {
     display: none;
 }
@@ -75,12 +69,6 @@ img {
 }
 .steps {
 	height: 2px;
-	position: absolute;
-	width: 39.91%;
-	background: #b7b2ab;
-	bottom: -52px;
-	left: 50%;
-	transform: translateX(-50%);
 	ul {
 		height: 2px;
 		position: absolute;
@@ -365,8 +353,15 @@ img {
 		height: auto;
 	}
 	.actions ul {
-		position: static;
-		margin: 0 20px;
+		/*position: static;
+		margin: 0 20px;*/
+    position: fixed;
+    margin: 0 auto;
+    z-index: 99999999;
+    border: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
 	}
 	.payment-block {
 		display: block;
@@ -376,10 +371,19 @@ img {
 	}
 	.steps {
 		bottom: -60px;
-		left: 20px;
-		right: 20px;
-		width: auto;
+		left: 0px;
+    right: 0px;
+		width: 95%;
 		transform: translateX(0);
 	}
+  .container.londonform {
+    padding: 0px!important;
+  }
+  .btnholderyellow {
+    padding: 10px 5px !important;
+  }
+  .btn-group, .btn-group-vertical {
+    padding: 10px 0px;
+  }
 }
 

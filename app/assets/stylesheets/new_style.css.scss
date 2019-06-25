@@ -369,8 +369,15 @@ img {
   padding-left:55px; 
 }
 
-@media (max-width: 1500px) {
+@media (min-width: 1200px) {
+  .steps {
+    width: 55%;
+    left: 29%;
+  }
+}
 
+
+@media (max-width: 1500px) {
   .wizard {
     margin-bottom: 25px; 
   } 
