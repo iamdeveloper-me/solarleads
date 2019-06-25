@@ -1,0 +1,29 @@
+.maincontainer
+  .stepcontainer
+    .homeslider
+      .container.mobileheadgradient
+        %nav.navbar.container_nav
+          / Brand and toggle get grouped for better mobile display
+          .navbar-header
+            %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.navbar-brand.logo_center{href: "#"}
+              = image_tag "new_logo.png"
+      %p.heading_class Choose where your power comes from
+      %p.sub_title
+        Lorem Ipsum is simply dummy text of the printing
+        and typesetting industry.
+      .button-8.next.next_1
+        .eff-8
+        = link_to "Home Efficiency Calculator", welcome_index_path
+      .bird-container.bird-container--one
+        .bird.bird--one
+      .bird-container.bird-container--two
+        .bird.bird--two
+      .bird-container.bird-container--three
+        .bird.bird--three
+      .bird-container.bird-container--four
+        .bird.bird--four

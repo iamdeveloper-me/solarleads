@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	# Root path
-	root "welcome#index"
-
+	root "welcome#home"
+	get "welcome/index"
 	# custum routes
 	get "leads/thankyou"
 	get "thank_you", to: "leads#email_thankyou"
