@@ -2,14 +2,16 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title SmartLeads
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %title Solarleads
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.css', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.js', 'data-turbolinks-track': 'reload'
-    %link{href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500", rel: "stylesheet", type: "text/css"}/
+    %link{href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css", rel: "stylesheet"}/
+    %link{href: "https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap", rel: "stylesheet"}/
     %link{href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", rel: "stylesheet"}/
     :css
       .slidecontainer {

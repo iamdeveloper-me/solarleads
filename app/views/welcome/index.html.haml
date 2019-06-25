@@ -1,10 +1,7 @@
-%link{href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css", rel: "stylesheet"}/
-%script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"}
-%script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"}
-.maincontainer
+.maincontainer{"data-turbolink" => "false"}
   .stepcontainer
     .homeslider
-      .container
+      .container.mobileheadgradient
         %nav.navbar.container_nav
           / Brand and toggle get grouped for better mobile display
           .navbar-header
@@ -13,18 +10,15 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            = link_to root_path, class: "navbar-brand" do
+            %a.navbar-brand.logo_center{href: "#"}
               = image_tag "new_logo.png"
-            = link_to "Create New Lead", new_lead_path, class: "create_lead"
-          #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %p.heading_class Choose where your power comes from
       %p.sub_title
         Lorem Ipsum is simply dummy text of the printing
-        %br/
         and typesetting industry.
       .button-8.next.next_1
         .eff-8
-        %a{href: "#"} Home Efficiency Calculator
+        %a{href: ""} Home Efficiency Calculator
       .bird-container.bird-container--one
         .bird.bird--one
       .bird-container.bird-container--two
@@ -33,78 +27,151 @@
         .bird.bird--three
       .bird-container.bird-container--four
         .bird.bird--four
-    .steps1
-    .steps2
-      %h1.subtitle.fancy
-        %span STEP 2 OF 3
-      %h2.form_heading What is your address?
-      %form{action: "/action_page.php"}
-        %input{name: "email", size: "35", type: "text"}/
-        %br/
-        %input{name: "email", size: "35", type: "text"}/
-        %br/
-      %button.next.next_3
-        Next
-%script{src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
+  %div
+    .container.stepsheader
+      %nav.navbar.container_nav
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "#"}
+            = image_tag "logo1.png", class: "logo_img"
+        %p.circal_img
+          = image_tag "circal.png"
+    .wrapper
+      = form_with(model: Lead.new, local: true, class: 'form-horizontal width100per', id: 'lead-form') do |form|
+        #wizard
+          / SECTION 1
+          %h4
+          %section.stepswrapper
+            .inner
+              .locationdiv
+                = image_tag "location.png"
+                %h2 What is your address?
+              .londonform
+                .col-md-7.londondiv.col-md-offset-1 
+                  .col-md-12.nopadd
+                    .form-group
+                      = form.text_field :address,{ id: "pac-input",class: 'form-control width100per', placeholder: "Enter your address", type: "text"}
+
+                    - #.label Street address
+                    .slimField
+                      %input#street_number.field{disabled: "true", type: "hidden"}>/
+                    .wideField
+                      %input#route.field{disabled: "true", type: "hidden"}>/
+
+                  .col-md-6
+                    .form-group
+                      = form.text_field :city,{ id: "locality", type: "text", class: 'form-control', placeholder: "City"}
+
+                  .col-md-6
+                    .form-group
+                      .slimField
+                        = form.text_field :state,{ id: "administrative_area_level_1", type: "text", class: 'form-control',placeholder: "State"}
+
+                  .col-md-6
+                    .form-group
+                      .wideField
+                        = form.text_field :zipcode,{ id: "postal_code", type: "text", class: 'form-control', placeholder: "Zip Code"}
+                        %span.inline_error
+                          -#= @lead.errors[:zipcode].join(', ')
+
+                  .col-md-6
+                    .form-group
+                      .wideField
+                        = form.text_field :country,{ id: "country", type: "text", class: 'form-control', placeholder: "Country"}
+
+                .col-md-4.mapdiv
+                  #map
+                  #infowindow-content
+                    %img#place-icon{height: "16", width: "16"}/
+                    %span#place-name.title
+                    %br/
+                    %span#place-address                  
+              .pre_next
+          / SECTION 2
+          %h4
+          %section.stepswrapper
+            .inner
+              .locationdiv
+                = image_tag "home.png"           
+                %h2 Age of Home
+              .container.londonform.less_more
+                %button Less than 10 years
+                %button Less than 10 years
+          / SECTION 3
+          %h4
+          %section
+            .inner
+              .locationdiv
+                = image_tag "provider.png"           
+                %h2 Electricity Provider
+              .container.londonform.step_3list
+                %button
+                  = image_tag "setp_3img1.png"
+                  SSE Southern Electric
+                %button
+                  = image_tag "setp_3img2.png"
+                  Bulb
+                %button
+                  = image_tag "setp_3img3.png"
+                  E-On
+                %button
+                  = image_tag "setp_3img4.png"
+                  Economy Energy
+                %button
+                  = image_tag "setp_3img5.png"
+                  EDF Energy
+                %button
+                  = image_tag "setp_3img6.png"
+                  Extra Energy
+                %button
+                  = image_tag "setp_3img7.png"
+                  Good Energy
+                %button
+                  = image_tag "setp_3img8.png"
+                  PFP Energy
+                %ul.step_3list
+                  %li
+                  %li
+                  %li
+                  %li
+                %ul.step_3list
+                  %li
+                  %li
+                  %li
+                  %li
+      .stepnum
+        %span> 01
+        \/28
+/ Template created and distributed by Colorlib
 :javascript
   $(document).ready(function(){
     $('.next_1').click(function(){
       $("div").removeClass("last_active_step");
       $(this).parent('div').addClass("last_active_step");
-      $('.stepcontainer').css("transform", "translate3d(0px, -100vh, 0px)");
-    });
-    $('.next_2').click(function(){
-      $("div").removeClass("last_active_step");
-      $(this).parent('div').addClass("last_active_step");
-      $('.stepcontainer').css("transform", "translate3d(0px, -200vh, 0px)");
-    });
-    $('.next_3').click(function(){
-      $("div").removeClass("last_active_step");
-      $(this).parent('div').addClass("last_active_step");
-     $('.stepcontainer').css("transform", "translate3d(0px, -300vh, 0px)");
-    });
-    $('.next_4').click(function(){
-     $('.stepcontainer').css("transform", "translate3d(0px, -400vh, 0px)");
-    });
-    $('.next_5').click(function(){
-     $('.stepcontainer').css("transform", "translate3d(0px, -500vh, 0px)");
-    });
-    $('.next_6').click(function(){
-     $('.stepcontainer').css("transform", "translate3d(0px, -600vh, 0px)");
-    });
-    $('.next_7').click(function(){
-     $('.stepcontainer').css("transform", "translate3d(0px, -700vh, 0px)");
-    });
-    $('.next_8').click(function(){
-     $('.stepcontainer').css("transform", "translate3d(0px, -600vh, 0px)");
+      $('.homeslider').css("transform", "translate3d(0px, -100vh, 0px)");
+      $('.stepcontainer').css("height", "0px");
+      $('.mobileheadgradient').css("display", "none");
+      setTimeout(function(){
+        $('.sub_title').css("display", "none");
+        $('.heading_class').css("display", "none");
+        $('.bird-container').css("display", "none");
+      }, 10);
     });
 
-    $('.previous-button').click(function(){
-      // last_active_step
-      // alert(parseInt($('.stepcontainer').css('transform').split(',')[5]) * 0.65)
-      // $('.stepcontainer').css('transform', "translate3d(0px, -0vh, 0px)")
-      var value, match;
-      var slideTransform = $('.stepcontainer').attr('style').split(';');
 
-      $.map(slideTransform, function(style){
-          style = style.trim();
-          if (style.startsWith('transform: translate3d')) {
-              // var s = "transform:translate3d(-1513px, 0px, 0px);"
-              // s.match(/transform:translate3d\((.+)px,(.+)px,(.+)px\)/);
-
-              // "transform: translate3d(0px, -300vh, 0px)"
-              match = style.match(/transform: translate3d\((.+)px,(.+)vh,(.+)px\)/);
-              
-              value = parseInt(match[2]);
-              // var newValue = value + 100;
-              // console.log(newValue);
-              // return 'transform:translate3d(' + newValue + 'px, 0px, 0px)';
-          }
-      });
-
-      var new_vh = value+100;
-      if (new_vh < 1) {
-        $('.stepcontainer').css('transform', "translate3d(0px, " + new_vh + "vh, 0px)")
-      }
+    $('.circal_img').click(function(){
+      $("div").addClass("last_active_step");
+      $(this).parent('div').removeClass("last_active_step");
+      $('.homeslider').css("transform", "translate3d(0px, 0vh, 0px)");
+      $('.stepcontainer').css("height", "inherit");
+      $('.mobileheadgradient').css("display", "block");
+      $('.sub_title').css("display", "block");
+      $('.heading_class').css("display", "block");
+      $('.bird-container').css("display", "block");
     });
   });
