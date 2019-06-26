@@ -538,33 +538,6 @@ input.form-control:focus {
     opacity: .6!important;
     background: #1e62dd!important;
   }
-  .actions li a:before {
-    content: "\f2ee";
-    font-family: Material-Design-Iconic-Font;
-    position: absolute;
-    right: 10px;
-    left: inherit;
-    width: 33PX;
-    height: 12PX;
-    background: url(/assets/left_arrow-3531cd2….png);
-    text-indent: -9999px;
-    background-repeat: no-repeat;
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-  .actions li:first-child a:before {
-    content: "\f2ee";
-    font-family: Material-Design-Iconic-Font;
-    position: absolute;
-    left: 10px;
-    width: 33PX;
-    height: 12PX;
-    background: url(/assets/left_arrow-3531cd2….png);
-    background-repeat: no-repeat;
-    text-indent: -9999px;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
   .less_more{
     text-align: center;
   }
