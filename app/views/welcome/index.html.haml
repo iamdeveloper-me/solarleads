@@ -294,6 +294,30 @@
                       = form.label :roof_ventilation, "Not Sure"
                       = form.radio_button :roof_ventilation, "Not Sure"
 
+          / SECTION 13
+          %h4
+          %section
+            .inner
+              .location_div
+                = image_tag "air_filters.png"
+                %h2.replaced_air How often do you replace air filters?
+              .container.london_form.less_more.button_width
+                .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+
+                  %label.btn.btnholderyellow
+                    #option1
+                      = form.label :replaced_air_filters, "Less than 3 Months"
+                      = form.radio_button :replaced_air_filters, "Less than 3 Months"
+
+                  %label.btn.btnholderyellow
+                    #option2
+                      = form.label :replaced_air_filters, "3-6 months"
+                      = form.radio_button :replaced_air_filters, "3-6 months"
+
+                  %label.btn.btnholderyellow
+                    #option3
+                      = form.label :replaced_air_filters, "6 Months +"
+                      = form.radio_button :replaced_air_filters, "6 Months +"
 
       .stepnum
         %span#step-number 1
