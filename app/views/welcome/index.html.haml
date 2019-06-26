@@ -121,6 +121,7 @@
                   - ElectricityProvider.all.each do |electricity_provider|
                     %label.btn.btnholderyellow
                       %input#option2{autocomplete: "off", name: "lead[electricity_provider_id]", value: "#{electricity_provider.id}", type: "radio", id: "lead_electricity_provider_id"}/
+                      = image_tag "setp_3img2.png"
                       = electricity_provider.name
           / SECTION 4
           %h4
@@ -292,6 +293,7 @@
                     #option3
                       = form.label :roof_ventilation, "Not Sure"
                       = form.radio_button :roof_ventilation, "Not Sure"
+
 
       .stepnum
         %span#step-number 1
