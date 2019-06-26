@@ -16,7 +16,7 @@
 //= require bootstrap
 //= require bootstrap.min
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 
 $(document).ready(function(){
