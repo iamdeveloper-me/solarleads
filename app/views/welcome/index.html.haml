@@ -172,9 +172,6 @@
               .container.london_form.less_more.button_width
                 .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
 
-                  -#%label.btn.btnholderyellow
-                    -#%input#option1{autocomplete: "off", checked: "checked", value: true, name: "lead[new_thermostat]", type: "radio", id: "lead_new_thermostat"}/
-
                   %label.btn.btnholderyellow
                     = form.label :new_thermostat, "Yes", :value => "true"
                     = form.radio_button :new_thermostat, true, :checked => true, id: 'option1'
@@ -183,9 +180,25 @@
                     = form.label :new_thermostat, "No", :value => "false"
                     = form.radio_button :new_thermostat, false, id: 'option2'
 
-                  -#%label.btn.btnholderyellow
-                    -#%input#option2{autocomplete: "off", name: "lead[new_thermostat]", value: false, type: "radio", id: "lead_new_thermostat"}/
-                    No
+          / SECTION 7
+          %h4
+          %section
+            .inner
+              .location_div
+                %img{src: "image/roof.png"}/
+                %h2 Age of Roof
+              .container.london_form.less_more.button_width
+                .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+
+                  %label.btn.btnholderyellow
+                    #option1
+                      = form.label :age_of_roof, "Less than 10"
+                      = form.radio_button :age_of_roof, "Less than 10"
+
+                  %label.btn.btnholderyellow
+                    #option2
+                      = form.label :age_of_roof, "More than 10"
+                      = form.radio_button :age_of_roof, "More than 10"
 
       .stepnum
         %span#step-number 1
