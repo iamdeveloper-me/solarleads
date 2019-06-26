@@ -162,6 +162,31 @@
                     %input#option3{autocomplete: "off", checked: "checked", value: "Not Sure", name: "lead[average_age_of_appliances]", type: "radio", id: "lead_average_age_of_appliances"}/
                     Not Sure
 
+          / SECTION 6
+          %h4
+          %section
+            .inner
+              .location_div
+                = image_tag "home_lock.png"
+                %h2.thermostat_new Do you have a new thermostat?
+              .container.london_form.less_more.button_width
+                .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+
+                  -#%label.btn.btnholderyellow
+                    -#%input#option1{autocomplete: "off", checked: "checked", value: true, name: "lead[new_thermostat]", type: "radio", id: "lead_new_thermostat"}/
+
+                  %label.btn.btnholderyellow
+                    = form.label :new_thermostat, "Yes", :value => "true"
+                    = form.radio_button :new_thermostat, true, :checked => true, id: 'option1'
+
+                  %label.btn.btnholderyellow
+                    = form.label :new_thermostat, "No", :value => "false"
+                    = form.radio_button :new_thermostat, false, id: 'option2'
+
+                  -#%label.btn.btnholderyellow
+                    -#%input#option2{autocomplete: "off", name: "lead[new_thermostat]", value: false, type: "radio", id: "lead_new_thermostat"}/
+                    No
+
       .stepnum
         %span> 01
         \/28
