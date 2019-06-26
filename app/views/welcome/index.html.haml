@@ -185,7 +185,7 @@
           %section
             .inner
               .location_div
-                %img{src: "image/roof.png"}/
+                = image_tag "roof.png"
                 %h2 Age of Roof
               .container.london_form.less_more.button_width
                 .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
@@ -199,6 +199,26 @@
                     #option2
                       = form.label :age_of_roof, "More than 10"
                       = form.radio_button :age_of_roof, "More than 10"
+
+          / SECTION 8
+          %h4
+          %section
+            .inner
+              .location_div
+                = image_tag "roof.png"
+                %h2 Roof Color
+              .container.london_form.less_more.button_width.dark_light
+                .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+
+                  %label.btn.btnholderyellow
+                    #option1.button_div
+                      = form.label :roof_color, "Dark Colored (Ex. Black, Gray)"
+                      = form.radio_button :roof_color, "Dark Colored (Ex. Black, Gray)"
+
+                  %label.btn.btnholderyellow
+                    #option2.button_div
+                      = form.label :roof_color, "Light (Ex. White, Yellow)"
+                      = form.radio_button :roof_color, "Light (Ex. White, Yellow)"
 
       .stepnum
         %span#step-number 1
