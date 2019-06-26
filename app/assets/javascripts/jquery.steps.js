@@ -215,6 +215,7 @@ function cancel(wizard)
 
 function decreaseCurrentIndexBy(state, decreaseBy)
 {
+    $("#step-number").text(state.currentIndex);
     return state.currentIndex - decreaseBy;
 }
 
@@ -525,6 +526,7 @@ function goToStep(wizard, options, state, index)
 
 function increaseCurrentIndexBy(state, increaseBy)
 {
+    $("#step-number").text(state.currentIndex + 2);
     return state.currentIndex + increaseBy;
 }
 
