@@ -100,8 +100,6 @@
                 = image_tag "home.png"
                 %h2 Age of Home
               .container.londonform.less_more
-                -#%button Less than 10 years
-                -#%button Less than 10 years
                 .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
 
                   %label.btn.btnholderyellow
@@ -140,6 +138,30 @@
                   = form.text_field :current_monthly_electricity_bill,{ id: "myRange", class:"", max: "500", min: "0", type: "range", value: "50"}
                   %span.starno $0
                   %span.endno $500
+
+          / SECTION 5
+          %h4
+          %section
+            .inner
+              .location_div
+                = image_tag "age.png"
+                %h2 Age of appliances
+              .container.london_form.less_more.button_width
+
+                .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+
+                  %label.btn.btnholderyellow
+                    %input#option1{autocomplete: "off", checked: "checked", value: "New", name: "lead[average_age_of_appliances]", type: "radio", id: "lead_average_age_of_appliances"}/
+                    New
+
+                  %label.btn.btnholderyellow
+                    %input#option2{autocomplete: "off", checked: "checked", value: "Old", name: "lead[average_age_of_appliances]", type: "radio", id: "lead_average_age_of_appliances"}/
+                    Old
+
+                  %label.btn.btnholderyellow
+                    %input#option3{autocomplete: "off", checked: "checked", value: "Not Sure", name: "lead[average_age_of_appliances]", type: "radio", id: "lead_average_age_of_appliances"}/
+                    Not Sure
+
       .stepnum
         %span> 01
         \/28
