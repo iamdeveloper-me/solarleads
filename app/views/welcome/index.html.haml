@@ -119,30 +119,11 @@
                 = image_tag "provider.png"           
                 %h2 Electricity Provider
               .container.londonform.step_3list
-                %button
-                  = image_tag "setp_3img1.png"
-                  SSE Southern Electric
-                %button
-                  = image_tag "setp_3img2.png"
-                  Bulb
-                %button
-                  = image_tag "setp_3img3.png"
-                  E-On
-                %button
-                  = image_tag "setp_3img4.png"
-                  Economy Energy
-                %button
-                  = image_tag "setp_3img5.png"
-                  EDF Energy
-                %button
-                  = image_tag "setp_3img6.png"
-                  Extra Energy
-                %button
-                  = image_tag "setp_3img7.png"
-                  Good Energy
-                %button
-                  = image_tag "setp_3img8.png"
-                  PFP Energy
+                .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+                  - ElectricityProvider.all.each do |electricity_provider|
+                    %label.btn.btnholderyellow
+                      %input#option2{autocomplete: "off", name: "lead[electricity_provider_id]", value: "#{electricity_provider.id}", type: "radio", id: "lead_electricity_provider_id"}/
+                      = electricity_provider.name
                 %ul.step_3list
                   %li
                   %li
