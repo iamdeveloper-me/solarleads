@@ -97,7 +97,7 @@
           %section.stepswrapper
             .inner
               .locationdiv
-                = image_tag "home.png"           
+                = image_tag "home.png"
                 %h2 Age of Home
               .container.londonform.less_more
                 -#%button Less than 10 years
@@ -124,16 +124,22 @@
                     %label.btn.btnholderyellow
                       %input#option2{autocomplete: "off", name: "lead[electricity_provider_id]", value: "#{electricity_provider.id}", type: "radio", id: "lead_electricity_provider_id"}/
                       = electricity_provider.name
-                %ul.step_3list
-                  %li
-                  %li
-                  %li
-                  %li
-                %ul.step_3list
-                  %li
-                  %li
-                  %li
-                  %li
+          / SECTION 4
+          %h4
+          %section
+            .inner
+              .location_div
+                = image_tag "average.png"
+                %h2 Average Monthly Utility Bill
+              .container.london_form
+                .rangebar_div
+                  %span.dolar_div $
+                  %output{style: "text-align: center;"} 50
+                  %br/
+                  %br/
+                  = form.text_field :current_monthly_electricity_bill,{ id: "myRange", class:"", max: "500", min: "0", type: "range", value: "50"}
+                  %span.starno $0
+                  %span.endno $500
       .stepnum
         %span> 01
         \/28
