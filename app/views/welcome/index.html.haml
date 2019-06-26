@@ -231,13 +231,26 @@
                 .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
                   - RoofType.all.each do |roof_type|
                     %label.btn.btnholderyellow
-                      = form.radio_button :roof_type_id, roof_type.id, id: "roof_type_#{roof_type.id}",class: "input-hidden", id: "option2"
+                      = form.radio_button :roof_type_id, roof_type.id, class: "input-hidden", id: "option2"
                       = image_tag roof_type.image
                       %p
                         = roof_type.name
 
-
-
+          / SECTION 10
+          %h4
+          %section
+            .inner
+              .location_div
+                = image_tag "roof_shading.png"
+                %h2 Roof Shading
+              .container.london_form.less_more.button_width
+                .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+                  - RoofShading.all.each do |roof_shading|
+                    %label.btn.btnholderyellow
+                      = form.radio_button :roof_shading_id, roof_shading.id, class: "input-hidden", id: "option2"
+                      = image_tag roof_shading.image
+                      %p
+                        = roof_shading.name
       .stepnum
         %span#step-number 1
         \/28
